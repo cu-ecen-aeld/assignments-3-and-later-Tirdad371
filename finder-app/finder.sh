@@ -3,7 +3,7 @@
 filesdir=$1
 searchstr=$2
 
-# Check that both arguments are provided
+
 if [ -z "$filesdir" ] || [ -z "$searchstr" ]; then
     echo "Error: Missing arguments"
     echo "Usage: ./finder.sh <directory> <search_string>"

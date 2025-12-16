@@ -50,3 +50,5 @@ else
     exit 1
 fi
 exit ${unit_test_rc}
+
+#Full Test
