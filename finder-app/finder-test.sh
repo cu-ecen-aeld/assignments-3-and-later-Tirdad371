@@ -1,6 +1,6 @@
 #!/bin/sh
 # Tester script for assignment 1 and assignment 2
-# Author: Siddhant Jajoo
+# Author: Tirdad
 
 set -e
 set -u
@@ -9,10 +9,6 @@ NUMFILES=10
 WRITESTR=AELD_IS_FUN
 WRITEDIR=/tmp/aeld-data
 username=$(cat conf/username.txt)
-
-# Clean previous build artifacts and build writer natively
-make clean
-make
 
 if [ $# -lt 3 ]
 then
@@ -57,4 +53,3 @@ else
     echo "failed: expected ${MATCHSTR} in ${OUTPUTSTRING} but instead found"
     exit 1
 fi
-
