@@ -10,4 +10,4 @@ cmake ..
 make clean
 make
 cd ..
-./build/assignment-autotest/assignment-autotest
+./build/assignment-autotest/
