@@ -1,15 +1,12 @@
 #!/bin/sh
 # Tester script for assignment 1 and assignment 2
 # Author: Tirdad
-
 set -e
 set -u
-
 NUMFILES=10
 WRITESTR=AELD_IS_FUN
 WRITEDIR=/tmp/aeld-data
-username=$(cat conf/username.txt)
-
+username=$(cat /etc/finder-app/conf/username.txt)
 if [ $# -lt 3 ]
 then
     echo "Using default value ${WRITESTR} for string to write"
@@ -23,27 +20,21 @@ else
     WRITESTR=$3
     WRITEDIR=$1
 fi
-
 MATCHSTR="The number of files are ${NUMFILES} and the number of matching lines are ${NUMFILES}"
-
 # Remove and recreate the directory
 rm -rf "$WRITEDIR"
 mkdir -p "$WRITEDIR"
-
 # Create files using the C writer application
 i=1
 while [ $i -le $NUMFILES ]
 do
-    ./writer "$WRITEDIR/$username$i.txt" "$WRITESTR"
+    writer "$WRITEDIR/$username$i.txt" "$WRITESTR"
     i=$((i + 1))
 done
-
 # Run finder and capture output
-OUTPUTSTRING=$(./finder.sh "$WRITEDIR" "$WRITESTR")
-
+OUTPUTSTRING=$(finder.sh "$WRITEDIR" "$WRITESTR")
 # Remove temporary directories
 rm -rf /tmp/aeld-data
-
 set +e
 echo "${OUTPUTSTRING}" | grep "${MATCHSTR}"
 if [ $? -eq 0 ]; then
