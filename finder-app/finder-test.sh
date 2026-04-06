@@ -33,6 +33,7 @@ do
 done
 # Run finder and capture output
 OUTPUTSTRING=$(finder.sh "$WRITEDIR" "$WRITESTR")
+echo "${OUTPUTSTRING}" > /tmp/assignment4-result.txt
 # Remove temporary directories
 rm -rf /tmp/aeld-data
 set +e
