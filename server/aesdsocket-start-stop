@@ -1,0 +1,33 @@
+#!/bin/sh
+### BEGIN INIT INFO
+# Provides:          aesdsocket
+# Required-Start:    $network $local_fs
+# Required-Stop:     $network $local_fs
+# Default-Start:     S
+# Default-Stop:
+# Short-Description: Start aesdsocket daemon
+### END INIT INFO
+
+DAEMON=/usr/bin/aesdsocket
+NAME=aesdsocket
+
+case "$1" in
+    start)
+        echo "Starting $NAME"
+        start-stop-daemon -S -n $NAME -a $DAEMON -- -d
+        ;;
+    stop)
+        echo "Stopping $NAME"
+        start-stop-daemon -K -n $NAME -s TERM
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: $0 {start|stop|restart}"
+        exit 1
+        ;;
+esac
+
+exit 0
